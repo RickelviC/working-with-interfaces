@@ -14,7 +14,17 @@ public class Person implements Comparable<Person> {
     @Override
     public int compareTo(Person person) {
         int last = this.lastName.compareTo(person.lastName);
-        return last == 0 ? this.firstName.compareTo(person.firstName) : last;
+
+        if (last != 0) {
+            return last;
+        }
+        int first = this.firstName.compareTo(person.firstName);
+
+        if (first != 0) {
+            return first;
+        }
+        return Integer.compare(this.age, person.age);
+
     }
 
     @Override
